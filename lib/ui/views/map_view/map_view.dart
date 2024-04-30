@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:prueba_digitalsolution_flutter/core/blocs/location/location_bloc.dart';
+import 'package:prueba_digitalsolution_flutter/core/blocs/map/map_bloc.dart';
 
 class MapView extends StatefulWidget {
   const MapView({super.key});
@@ -57,6 +58,7 @@ class _MapViewState extends State<MapView> {
                     zoomControlsEnabled: false,
                     myLocationButtonEnabled: false,
                     // markers: ,
+                    onMapCreated: ( controller ) => context.read<MapBloc>().add( OnMapInitializedEvent(controller) ),
                   ),
                 ),
       
