@@ -12,6 +12,7 @@
         android:label="prueba_digitalsolution_flutter"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyAOV6oyUt4ZGBM2WjPkew4HcxeZgzqZNeQ"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
