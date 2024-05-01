@@ -17,7 +17,7 @@ Se deja un APK para la prueba desde dispositivos Android dentro de la carpeta AP
 
 Al presionar el botón `Iniciar viaje` trazará una ruta con todos los markers previamente asignados.
 
-![](docs/geolocator_documentation.png)
+![](docs/map_markers.png)
 
 Al dar al botón de la ubicación se ajusta para poder seguir la ubicación en tiempo real, para quitarlo se puede mover el mapa y desaparece esta funcionalidad, de igual para volver a activarla se vuelve a dar al botón, adicional a esto cuando se quiera mostrar más información sobre la ubicación o el "Pedido/Encargo" al dar clic al marker mostrará más información incluido los productos a entregar.
 
