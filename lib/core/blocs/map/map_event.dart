@@ -36,5 +36,6 @@ class DisplayPolylinesEvent extends MapEvent {
 
 class DisplayInformationCliente extends MapEvent {
   final Cliente? cliente;
-  const DisplayInformationCliente(this.cliente);
+  final bool isShowInfoMarker;
+  const DisplayInformationCliente({this.cliente, required this.isShowInfoMarker});
 }

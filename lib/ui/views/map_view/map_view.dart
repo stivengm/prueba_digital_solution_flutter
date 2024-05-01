@@ -67,10 +67,10 @@ class _MapViewState extends State<MapView> {
                   child: Listener(
                     onPointerMove: (pointerMoveEvent) {
                       mapBloc.add( OnStopFollowingUserEvent() );
-                      mapBloc.add( DisplayInformationCliente(clearCliente) );
+                      mapBloc.add( DisplayInformationCliente(cliente: clearCliente, isShowInfoMarker: false) );
                     },
                     onPointerHover: (event) {
-                      mapBloc.add( DisplayInformationCliente(clearCliente) );
+                      mapBloc.add( DisplayInformationCliente(cliente: clearCliente, isShowInfoMarker: false) );
                     },
                     child: GoogleMap(
                       initialCameraPosition: initialCameraPosition,
@@ -86,7 +86,7 @@ class _MapViewState extends State<MapView> {
                   ),
                 ),
 
-                mapBloc.state.cliente?.marker != null ? const InformationCliente() : const SizedBox(),
+                mapBloc.state.isShowInfoMarker ? const InformationCliente() : const SizedBox(),
 
                 Positioned(
                   bottom: 40,

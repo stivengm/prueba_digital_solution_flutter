@@ -11,7 +11,6 @@ class InformationCliente extends StatelessWidget {
     Size media = MediaQuery.of(context).size;
     return BlocBuilder<MapBloc, MapState>(
       builder: (context, state) {
-        print(state.cliente?.products);
         return SafeArea(
           child: Container(
             width: media.width,
@@ -25,7 +24,7 @@ class InformationCliente extends StatelessWidget {
                 RichTextWidget(title: "Nombre: ", subtitle: "${state.cliente?.name}",),
                 RichTextWidget(title: "Dirección: ", subtitle: "${state.cliente?.address}",),
                 const _HeaderInformationCliente(text: "Productos a entregar"),
-                state.cliente?.products != null ?
+                state.isShowInfoMarker ?
                 SizedBox(
                   height: 100,
                   child: ListView.builder(
