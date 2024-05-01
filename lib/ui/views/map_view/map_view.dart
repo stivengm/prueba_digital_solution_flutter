@@ -6,6 +6,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:prueba_digitalsolution_flutter/core/blocs/location/location_bloc.dart';
 import 'package:prueba_digitalsolution_flutter/core/blocs/map/map_bloc.dart';
 import 'package:prueba_digitalsolution_flutter/core/themes/map.theme.dart';
+import 'package:prueba_digitalsolution_flutter/ui/widgets/widgets.dart';
 
 class MapView extends StatefulWidget {
   const MapView({super.key});
@@ -56,15 +57,18 @@ class _MapViewState extends State<MapView> {
                 SizedBox(
                   width: media.width,
                   height: media.height,
-                  child: GoogleMap(
-                    initialCameraPosition: initialCameraPosition,
-                    compassEnabled: false,
-                    myLocationEnabled: true,
-                    zoomControlsEnabled: false,
-                    myLocationButtonEnabled: false,
-                    style: jsonEncode(mapStyleTheme),
-                    markers: Set<Marker>.of(markers),
-                    onMapCreated: ( controller ) => context.read<MapBloc>().add( OnMapInitializedEvent(controller: controller) ),
+                  child: Listener(
+                    onPointerMove: ( pointerMoveEvent) => mapBloc.add( OnStopFollowingUserEvent() ),
+                    child: GoogleMap(
+                      initialCameraPosition: initialCameraPosition,
+                      compassEnabled: false,
+                      myLocationEnabled: true,
+                      zoomControlsEnabled: false,
+                      myLocationButtonEnabled: false,
+                      style: jsonEncode(mapStyleTheme),
+                      markers: Set<Marker>.of(markers),
+                      onMapCreated: ( controller ) => mapBloc.add( OnMapInitializedEvent(controller: controller) ),
+                    ),
                   ),
                 ),
       
@@ -75,12 +79,13 @@ class _MapViewState extends State<MapView> {
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      floatingActionButton: FloatingActionButton(
-        child: Icon(
-          Icons.location_on_outlined
-        ),
-        onPressed: () {},
-      ),
+      floatingActionButton: const Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          BtnFollowUser(),
+          BtnAddMarker()
+        ],
+      )
     );
   }
 }

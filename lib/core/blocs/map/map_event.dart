@@ -16,6 +16,9 @@ class OnMapInitializedEvent extends MapEvent {
   });
 }
 
+class OnStartFollowingUserEvent extends MapEvent {}
+class OnStopFollowingUserEvent extends MapEvent {}
+
 class DisplayMarkersEvent extends MapEvent {
   final Map<String, Marker> markers;
   const DisplayMarkersEvent(this.markers);
