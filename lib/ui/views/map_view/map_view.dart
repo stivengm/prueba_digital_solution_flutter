@@ -66,6 +66,7 @@ class _MapViewState extends State<MapView> {
                       zoomControlsEnabled: false,
                       myLocationButtonEnabled: false,
                       style: jsonEncode(mapStyleTheme),
+                      polylines: mapBloc.state.polylines.values.toSet(),
                       markers: Set<Marker>.of(markers),
                       onMapCreated: ( controller ) => mapBloc.add( OnMapInitializedEvent(controller: controller) ),
                     ),

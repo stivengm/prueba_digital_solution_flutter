@@ -19,6 +19,11 @@ class OnMapInitializedEvent extends MapEvent {
 class OnStartFollowingUserEvent extends MapEvent {}
 class OnStopFollowingUserEvent extends MapEvent {}
 
+class UpdateUserPolylineEvent extends MapEvent {
+  final List<LatLng> userLocation;
+  const UpdateUserPolylineEvent(this.userLocation);
+}
+
 class DisplayMarkersEvent extends MapEvent {
   final Map<String, Marker> markers;
   const DisplayMarkersEvent(this.markers);

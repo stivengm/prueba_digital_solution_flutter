@@ -15,7 +15,10 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
   LocationBloc() : super(const LocationState()) {
 
     on<OnNewLocationEvent>((event, emit) {
-      emit( state.copyWith( currentPosition: event.currentPosition ) );
+      emit( state.copyWith( 
+        currentPosition: event.currentPosition,
+        myLocationHistory: [ ...state.myLocationHistory, event.currentPosition ]
+      ));
     });
   }
 
