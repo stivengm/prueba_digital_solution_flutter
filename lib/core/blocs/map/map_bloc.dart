@@ -30,6 +30,7 @@ class MapBloc extends Bloc<MapEvent, MapState> {
     on<OnStopFollowingUserEvent>((event, emit) => emit( state.copyWith( isFollowUser: false) ));
     on<UpdateUserPolylineEvent>( _onPolylineHistory );
     on<DisplayPolylinesEvent>((event, emit) => emit( state.copyWith( polylines: event.polylines) ));
+    on<DisplayInformationCliente>((event, emit) => emit( state.copyWith( cliente: event.cliente) ));
 
     _locationStateSubscription = locationBloc.stream.listen(( locationState ) {
       if ( locationState.currentPosition != null) {
@@ -45,7 +46,14 @@ class MapBloc extends Bloc<MapEvent, MapState> {
   void _onInitMap( OnMapInitializedEvent event, Emitter<MapState> emit ) {
     _mapController = event.controller;
 
-    emit( state.copyWith( isMapInitialized: true, markers: clientes ) );
+    final clientesMarkers = clientes.map(( cliente ) => Marker(
+      markerId: cliente.marker!.markerId,
+      position: cliente.marker!.position,
+      infoWindow: cliente.marker!.infoWindow,
+      onTap: () => add( DisplayInformationCliente(cliente) )
+    )).toList();
+
+    emit( state.copyWith( isMapInitialized: true, markers: clientesMarkers ) );
   }
 
   void _onPolylineHistory( UpdateUserPolylineEvent event, Emitter<MapState> emit ) {

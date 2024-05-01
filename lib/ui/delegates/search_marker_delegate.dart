@@ -44,7 +44,7 @@ class SearchMarkerDelegate extends SearchDelegate {
             Icons.location_on_outlined,
             color: Colors.black,
           ),
-          title: Text(""),
+          title: const Text("Calle 138C sur 14k 26"),
           onTap: () {},
         )
       ],

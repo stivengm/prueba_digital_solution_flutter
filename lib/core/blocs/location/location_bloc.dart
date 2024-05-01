@@ -30,7 +30,6 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
   void startFollowingUser() {
     locationStreamSubscription = Geolocator.getPositionStream().listen((event) {
       final position = event;
-      print("Position: $position");
       add( OnNewLocationEvent( LatLng( position.latitude, position.longitude ) ) );
     });
   }

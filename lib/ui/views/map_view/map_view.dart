@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:prueba_digitalsolution_flutter/core/blocs/location/location_bloc.dart';
 import 'package:prueba_digitalsolution_flutter/core/blocs/map/map_bloc.dart';
+import 'package:prueba_digitalsolution_flutter/core/models/clientes_models.dart';
 import 'package:prueba_digitalsolution_flutter/core/themes/map.theme.dart';
 import 'package:prueba_digitalsolution_flutter/ui/widgets/widgets.dart';
 
@@ -49,6 +50,12 @@ class _MapViewState extends State<MapView> {
 
           final mapBloc = context.read<MapBloc>();
           List<Marker> markers = mapBloc.state.markers;
+
+          final clearCliente = Cliente(
+            id: 0,
+            name: "",
+            address: ""
+          );
       
           return SingleChildScrollView(
             scrollDirection: Axis.vertical,
@@ -58,7 +65,13 @@ class _MapViewState extends State<MapView> {
                   width: media.width,
                   height: media.height,
                   child: Listener(
-                    onPointerMove: ( pointerMoveEvent) => mapBloc.add( OnStopFollowingUserEvent() ),
+                    onPointerMove: (pointerMoveEvent) {
+                      mapBloc.add( OnStopFollowingUserEvent() );
+                      mapBloc.add( DisplayInformationCliente(clearCliente) );
+                    },
+                    onPointerHover: (event) {
+                      mapBloc.add( DisplayInformationCliente(clearCliente) );
+                    },
                     child: GoogleMap(
                       initialCameraPosition: initialCameraPosition,
                       compassEnabled: false,
@@ -72,6 +85,8 @@ class _MapViewState extends State<MapView> {
                     ),
                   ),
                 ),
+
+                mapBloc.state.cliente?.name != '' && mapBloc.state.cliente?.name != null ? const InformationCliente() : const SizedBox(),
 
                 Positioned(
                   bottom: 40,

@@ -33,3 +33,8 @@ class DisplayPolylinesEvent extends MapEvent {
   final Map<String, Polyline> polylines;
   const DisplayPolylinesEvent(this.polylines);
 }
+
+class DisplayInformationCliente extends MapEvent {
+  final Cliente? cliente;
+  const DisplayInformationCliente(this.cliente);
+}

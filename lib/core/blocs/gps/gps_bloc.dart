@@ -13,9 +13,6 @@ class GpsBloc extends Bloc<GpsEvent, GpsState> {
   StreamSubscription? gpsServiceSubscription;
   
   GpsBloc() : super(const GpsState(isGpsEnabled: false, isGpsPermissionGranted: false)) {
-    on<GpsEvent>((event, emit) {
-      // TODO: implement event handler
-    });
 
     on<GpsAndPermissionEvent>((event, emit) => emit( state.copyWith(
         isGpsEnabled: event.isGpsEnabled,
