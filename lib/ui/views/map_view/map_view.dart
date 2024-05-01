@@ -1,8 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:prueba_digitalsolution_flutter/core/blocs/location/location_bloc.dart';
 import 'package:prueba_digitalsolution_flutter/core/blocs/map/map_bloc.dart';
+import 'package:prueba_digitalsolution_flutter/core/themes/map.theme.dart';
 
 class MapView extends StatefulWidget {
   const MapView({super.key});
@@ -43,6 +46,8 @@ class _MapViewState extends State<MapView> {
 
           Size media = MediaQuery.of(context).size;
 
+          final mapBloc = context.read<MapBloc>();
+          List<Marker> markers = mapBloc.state.markers;
       
           return SingleChildScrollView(
             scrollDirection: Axis.vertical,
@@ -57,8 +62,9 @@ class _MapViewState extends State<MapView> {
                     myLocationEnabled: true,
                     zoomControlsEnabled: false,
                     myLocationButtonEnabled: false,
-                    // markers: ,
-                    onMapCreated: ( controller ) => context.read<MapBloc>().add( OnMapInitializedEvent(controller) ),
+                    style: jsonEncode(mapStyleTheme),
+                    markers: Set<Marker>.of(markers),
+                    onMapCreated: ( controller ) => context.read<MapBloc>().add( OnMapInitializedEvent(controller: controller) ),
                   ),
                 ),
       
@@ -69,11 +75,11 @@ class _MapViewState extends State<MapView> {
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      floatingActionButton: const Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          // BtnCurrentLocation()
-        ],
+      floatingActionButton: FloatingActionButton(
+        child: Icon(
+          Icons.location_on_outlined
+        ),
+        onPressed: () {},
       ),
     );
   }

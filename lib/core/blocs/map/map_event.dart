@@ -9,5 +9,14 @@ sealed class MapEvent extends Equatable {
 
 class OnMapInitializedEvent extends MapEvent {
   final GoogleMapController controller;
-  const OnMapInitializedEvent(this.controller);
+  final List<Marker>? markers; 
+  const OnMapInitializedEvent({
+    required this.controller, 
+    this.markers
+  });
+}
+
+class DisplayMarkersEvent extends MapEvent {
+  final Map<String, Marker> markers;
+  const DisplayMarkersEvent(this.markers);
 }
