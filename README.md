@@ -7,7 +7,7 @@ Este proyecto está desarrollador en Flutter con el lenguaje de programación Da
 - Instalar y configurar Flutter en el computador. [Link Flutter](https://flutter.dev/docs/get-started/install)
 - Instalar y configurar Android Studio. [Link Android Studio](https://developer.android.com/studio)
 
-> Versión de Flutter 2.10.1
+> Versión de Flutter 3.19.3
 
 
 ## Versión Móvil.
