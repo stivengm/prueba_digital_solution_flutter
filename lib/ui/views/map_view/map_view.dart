@@ -86,7 +86,7 @@ class _MapViewState extends State<MapView> {
                   ),
                 ),
 
-                mapBloc.state.cliente?.name != '' && mapBloc.state.cliente?.name != null ? const InformationCliente() : const SizedBox(),
+                mapBloc.state.cliente?.marker != null ? const InformationCliente() : const SizedBox(),
 
                 Positioned(
                   bottom: 40,
