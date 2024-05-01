@@ -72,8 +72,20 @@ class _MapViewState extends State<MapView> {
                     ),
                   ),
                 ),
-      
-                // TODO: Los botones.
+
+                Positioned(
+                  bottom: 40,
+                  left: (media.width - 0.7) / 6,
+                  child: SizedBox(
+                    width: media.width * 0.7,
+                    child: PrimaryButton(text: 'Iniciar viaje', onPressed: () async {
+
+                      final resp = await mapBloc.getCoorsStartToEnd();
+                      mapBloc.drawRoutePolyline(resp);
+
+                    })
+                  )
+                ),
               ],
             ),
           );
