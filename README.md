@@ -1,16 +1,19 @@
 # prueba_digitalsolution_flutter
 
-A new Flutter project.
+Este proyecto está desarrollador en Flutter con el lenguaje de programación Dart.
 
-## Getting Started
+## Requisitos
 
-This project is a starting point for a Flutter application.
+- Instalar y configurar Flutter en el computador. [Link Flutter](https://flutter.dev/docs/get-started/install)
+- Instalar y configurar Android Studio. [Link Android Studio](https://developer.android.com/studio)
 
-A few resources to get you started if this is your first Flutter project:
+> Versión de Flutter 2.10.1
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Versión Móvil.
+
+## Versión Web.
+
+No hay plugin para obtener la ubicación del dispositivo en Web, por este motivo no se puede ejecutar en Web, en este caso se está usando el plugin `Geolocator` que tiene soporte para `Web` pero no se puede ejecutar en protocolo HTTP, sólo funciona en protocolo HTTPS, como lo indica su documentación oficial [Geolocator Documentación](https://pub.dev/packages/geolocator), de igual manera se adjunta imagen de la razón.
+
+![](assets/geolocator_documentation.png)
