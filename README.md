@@ -25,6 +25,6 @@ Al dar al botón de la ubicación se ajusta para poder seguir la ubicación en t
 
 ## Versión Web.
 
-No hay plugin para obtener la ubicación del dispositivo en Web, por este motivo no se puede ejecutar en Web, en este caso se está usando el plugin `Geolocator` que tiene soporte para `Web` pero no se puede ejecutar en protocolo HTTP, sólo funciona en protocolo HTTPS, como lo indica su documentación oficial [Geolocator Documentación](https://pub.dev/packages/geolocator), de igual manera se adjunta imagen de la razón.
+No hay plugin para obtener la ubicación del dispositivo en Web, por este motivo no se puede ejecutar en Web, en este caso se está usando el plugin `Geolocator` que tiene soporte para `Web` pero no se puede ejecutar en protocolo HTTP, sólo funciona en protocolo HTTPS, como lo indica su documentación oficial [Geolocator Documentación](https://pub.dev/packages/geolocator), de igual manera se adjunta imagen de la razón, incluido no se pueden usar los métodos para obtener la ubicación o los permisos de ubicación del dispositivo.
 
 ![](docs/geolocator_documentation.png)
